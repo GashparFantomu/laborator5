@@ -3,5 +3,5 @@ deci.. deeeci deci deci deci..
 2) metoda de tip List (for me that's new)
 3) separat programul in doua metode sa am Main-ul mai liber
 4) invatat sa folosesc debuggerul
-5) chestia cu extract method e defoloasa insa nu stiu sa folosesc chestia aia inca, inteleg conceptul but its still weird
+5) chestia cu extract method e misto insa nu stiu sa folosesc chestia aia inca, inteleg conceptul but its still weird
 for now that's pretty much it, o sa fac recap la fiecare laborator
