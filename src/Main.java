@@ -4,25 +4,13 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         //readingFile(); List<Persoana>list = read(fisierul.txt) si dupa dai extract method
-        List<String> names = new ArrayList<>(); //evaluate expresion, sa folosim debuggerul, gandire algoritmica debugg la o functie recursiva
-        try {
-            File fileNames = new File("namesAndAge.txt");
-            Scanner readNames = new Scanner(fileNames);
+        //evaluate expresion, sa folosim debuggerul, gandire algoritmica, debugg la o functie recursiva
+        List<Person> persons = readPersons("namesAndAges.txt");
+        persons.sort(Comparator.comparing(Person::getName));
+        printPersons(persons);
 
-            while (readNames.hasNextLine()) {
-                names.add(readNames.nextLine());
-                names.sort(Comparator.naturalOrder()); //comparator.comparing (persoana) -> persoana.getName()
-            }//metoda afisareEcran
-            /*for(String name : names){
-                System.out.println(name);
-            }*/
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        printNames(names);
     }
-
-    public static void printNames(List<String> names){
+    /*public static void printNames(List<String> names){
         for(String name : names){
             System.out.println(name);
         }
@@ -35,8 +23,31 @@ public class Main {
         catch(FileNotFoundException e){
             e.printStackTrace();
         }
-    }
-    /*private static void readingFile() {
-        List<Person>list = read("namesAndAge");
     }*/
+
+    public static List<Person> readPersons(String fileName) {
+        List<Person> persons = new ArrayList<>();
+        try{
+            File fileNames = new File("namesAndAge.txt");
+            Scanner scanner = new Scanner(fileNames);
+            while (scanner.hasNextLine()) {
+                String names = scanner.nextLine();
+                String[] nameParts = names.split(" ");
+                String prenume = nameParts[0];
+                String name = nameParts[1];
+                int age = Integer.parseInt(nameParts[2]);
+                persons.add(new Person(name, age, prenume));
+            }
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return persons;
+    }
+    public static void printPersons(List<Person> persons) {
+        for (Person person : persons) {
+            System.out.println(person.getName() + " " + person.getPrenume() + " " + person.getAge());
+        }
+    }
+
 }
